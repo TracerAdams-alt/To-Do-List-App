@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    text-align: center;
+    background-color: brown;
+    color: aquamarine;
+}
+h1 {
+    padding-block: 30px;
+}
+form {
+    padding-block: 30px;
+}
+ul {
+    padding-block: 15px;
+}
+li {
+    padding-block: 4px;
+}
