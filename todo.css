@@ -11,6 +11,10 @@ body {
 h1 {
     padding-block: 30px;
 }
+h3 {
+    padding-block: 15px;
+    width: 30vw;
+}
 form {
     padding-block: 30px;
 }
@@ -19,4 +23,15 @@ ul {
 }
 li {
     padding-block: 4px;
+    list-style-type: ;
+}
+
+.list {
+    margin-inline: 30px;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 30vw;
+}
+#myCheckbox {
+    margin-right: 10px;
 }
