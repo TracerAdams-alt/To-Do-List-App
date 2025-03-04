@@ -1,9 +1,13 @@
 let listSpace = document.getElementById("listSpace");
+if (!listSpace) {
+    console.error("Error: listSpace element not found.");
+}
+
 
 document.addEventListener("DOMContentLoaded", loadLists);
 
 function createList() {
-    let listId = Date.now().toString(); // Unique ID for each list
+    let listId = Date.now().toString(); 
     let ourHTML = `<div class="list" data-id="${listId}">
         <button class="del1" onclick="deleteList(this)">Delete</button>
         <form onsubmit="event.preventDefault();">
@@ -21,7 +25,7 @@ function createItem(buttonElement) {
     let listDiv = buttonElement.closest(".list"); 
     let inputField = listDiv.querySelector("input");
     let list = listDiv.querySelector("ul"); 
-    let itemId = Date.now().toString(); // Unique ID for each item
+    let itemId = Date.now().toString(); 
 
     let itemText = inputField.value.trim();
     if (itemText !== "") {
@@ -76,28 +80,34 @@ function saveLists() {
 }
 
 function loadLists() {
-    let storedLists = sessionStorage.getItem("todoLists");
-    if (storedLists) {
-        JSON.parse(storedLists).forEach(listData => {
-            let ourHTML = `<div class="list" data-id="${listData.id}">
-                <button class="del1" onclick="deleteList(this)">Delete</button>
-                <form onsubmit="event.preventDefault();">
-                  <h3 contenteditable="true" oninput="saveLists()">${listData.title}</h3>
-                  <input type="text" autocomplete="off" onkeydown="handleEnter(event, this)">
-                  <button type="button" onclick="createItem(this)">Create Item</button>
-                </form>
-                <ul>
-                  ${listData.items.map(item => `
-                    <div class="listItem" data-id="${item.id}">
-                      <li>
-                        <input type="checkbox" ${item.checked ? "checked" : ""} onchange="saveLists()"> ${item.text}
-                        <button onclick="deleteItem(this)">Delete</button>
-                      </li>
-                    </div>
-                  `).join('')}
-                </ul>
-              </div>`;
-            listSpace.insertAdjacentHTML("beforeend", ourHTML);
-        });
-    }
+  let storedLists = sessionStorage.getItem("todoLists");
+  if (storedLists) {
+      try {
+          let lists = JSON.parse(storedLists);
+          lists.forEach(listData => {
+              let ourHTML = `<div class="list" data-id="${listData.id}">
+                  <button class="del1" onclick="deleteList(this)">Delete</button>
+                  <form onsubmit="event.preventDefault();">
+                    <h3 contenteditable="true" oninput="saveLists()">${listData.title}</h3>
+                    <input type="text" autocomplete="off" onkeydown="handleEnter(event, this)">
+                    <button type="button" onclick="createItem(this)">Create Item</button>
+                  </form>
+                  <ul>
+                    ${listData.items.map(item => `
+                      <div class="listItem" data-id="${item.id}">
+                        <li>
+                          <input type="checkbox" ${item.checked ? "checked" : ""} onchange="saveLists()"> ${item.text}
+                          <button onclick="deleteItem(this)">Delete</button>
+                        </li>
+                      </div>
+                    `).join('')}
+                  </ul>
+                </div>`;
+              listSpace.insertAdjacentHTML("beforeend", ourHTML);
+          });
+      } catch (error) {
+          console.error("Error loading lists from sessionStorage:", error);
+          sessionStorage.removeItem("todoLists"); 
+      }
+  }
 }
