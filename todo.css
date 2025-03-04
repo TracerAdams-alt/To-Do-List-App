@@ -3,35 +3,77 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     text-align: center;
     background-color: brown;
     color: aquamarine;
 }
+
 h1 {
     padding-block: 30px;
 }
+
 h3 {
     padding-block: 15px;
+    max-width: 90%;
     width: 30vw;
+    margin: auto;
 }
+
 form {
     padding-block: 30px;
 }
+
 ul {
     padding-block: 15px;
+    list-style: none;
 }
+
 li {
     padding-block: 4px;
-    list-style-type: ;
 }
 
 .list {
-    margin-inline: 30px;
+    margin-inline: auto;
     border: 2px solid black;
     border-radius: 15px;
     width: 30vw;
+    max-width: 400px;
+    padding: 10px;
 }
+
 #myCheckbox {
     margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .list {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        width: 80%;
+    }
+
+    .list {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .list {
+        width: 80vw;
+    }
 }
