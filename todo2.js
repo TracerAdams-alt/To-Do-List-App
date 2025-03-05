@@ -103,8 +103,8 @@ function loadLists() {
                   <div class="list-top">
                       <button class="del1" onclick="deleteList(this)">Delete</button>
                       <img src="svg/minimize.svg" height="20px" width="20px" alt="Toggle List" class="toggle-icon" onclick="toggleList(this)">
+                      </div>
                       <h3 contenteditable="true" oninput="saveLists()">${listData.title}</h3>
-                  </div>
                   <div class="list-content ${listData.collapsed ? 'hidden' : ''}">
                       <form onsubmit="event.preventDefault();">
                           <input type="text" autocomplete="off" onkeydown="handleEnter(event, this)">
