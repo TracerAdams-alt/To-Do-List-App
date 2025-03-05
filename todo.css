@@ -35,7 +35,6 @@ li {
 }
 
 .list {
-    margin-inline: auto;
     border: 2px solid black;
     border-radius: 15px;
     width: 30vw;
@@ -47,7 +46,24 @@ li {
     margin-right: 10px;
 }
 
-/* Responsive Design */
+.listSpace {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.createList {
+    margin-block: 20px;
+}
+
+button:focus, input:focus, h3:focus {
+    outline: 2px solid yellow;
+    background-color: rgba(255, 255, 0, 0.2);
+}
+
+
+
 @media (max-width: 1024px) {
     .list {
         width: 40vw;

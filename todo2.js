@@ -5,7 +5,7 @@ if (!listSpace) {
 
 
 document.addEventListener("DOMContentLoaded", loadLists);
-
+// BUTTON  FUNCTIONS AND CONTENT
 function createList() {
     let listId = Date.now().toString(); 
     let ourHTML = `<div class="list" data-id="${listId}">
@@ -58,7 +58,7 @@ function deleteList(buttonElement) {
     buttonElement.closest(".list").remove();
     saveLists();
 }
-
+// STORAGE
 function saveLists() {
     let lists = [];
     document.querySelectorAll(".list").forEach(list => {
@@ -78,7 +78,7 @@ function saveLists() {
     });
     sessionStorage.setItem("todoLists", JSON.stringify(lists));
 }
-
+// ERROR HANDLING
 function loadLists() {
   let storedLists = sessionStorage.getItem("todoLists");
   if (storedLists) {
